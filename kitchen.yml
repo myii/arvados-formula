@@ -8,6 +8,9 @@ driver:
   privileged: true
   run_command: /lib/systemd/systemd
 
+# Using the commit title as a comment to guarantee change for new commit/push:
+# feat(gitlab-ci): use GitLab CI as Travis CI replacement (2020-W50_02)
+
 # Make sure the platforms listed below match up with
 # the `env.matrix` instances defined in `.travis.yml`
 platforms:
@@ -39,10 +42,6 @@ platforms:
     driver:
       image: saltimages/salt-master-py3:ubuntu-18.04
 
-  - name: amazonlinux-2-3001-py3
-    driver:
-      image: saltimages/salt-3001-py3:amazonlinux-2
-
   ## SALT `3001`
   - name: debian-10-3001-py3
     driver:
@@ -59,6 +58,9 @@ platforms:
   - name: centos-7-3001-py3
     driver:
       image: saltimages/salt-3001-py3:centos-7
+  - name: amazonlinux-2-3001-py3
+    driver:
+      image: saltimages/salt-3001-py3:amazonlinux-2
 
   ## SALT `3000.3`
   - name: debian-10-3000-3-py3
