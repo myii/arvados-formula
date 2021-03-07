@@ -171,8 +171,8 @@ keepstore-centos-7-master-py3: {extends: '.test_instance'}
 # keepstore-oraclelinux-8-master-py3: {extends: '.test_instance'}
 # api-oraclelinux-7-master-py3: {extends: '.test_instance'}
 # workbench-oraclelinux-7-master-py3: {extends: '.test_instance'}
-# shell-oraclelinux-7-master-py3: {extends: '.test_instance'}
-# keepstore-oraclelinux-7-master-py3: {extends: '.test_instance'}
+shell-oraclelinux-7-master-py3: {extends: '.test_instance'}
+keepstore-oraclelinux-7-master-py3: {extends: '.test_instance'}
 # api-debian-10-3002-5-py3: {extends: '.test_instance'}
 # api-debian-9-3002-5-py3: {extends: '.test_instance'}
 # api-ubuntu-2004-3002-5-py3: {extends: '.test_instance'}

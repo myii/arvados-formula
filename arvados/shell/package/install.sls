@@ -33,6 +33,12 @@ arvados-shell-package-install-pkg-installed:
       {%- endfor %}
 
 arvados-shell-package-install-gems-deps-pkg-installed:
+  {%- if grains.get('osfinger', '') == 'Oracle Linux Server-7' %}
+  cmd.run:
+    - name: "yum-config-manager --enable ol7_optional_latest"
+    - require_in:
+      - pkg: arvados-shell-package-install-gems-deps-pkg-installed
+  {%- endif %}
   pkg.installed:
     - pkgs: {{ arvados.ruby.gems_deps | json }}
     - only_if: test "{{ arvados.ruby.manage_gems_deps | lower }}" = "true"

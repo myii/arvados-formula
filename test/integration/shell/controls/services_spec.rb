@@ -5,13 +5,14 @@ control 'arvados shellinabox service' do
   title 'should be running and enabled'
 
   serv = case os[:name]
-         when 'centos'
+         when 'centos', 'oracle'
            'shellinaboxd'
          when 'debian', 'ubuntu'
            'shellinabox'
          end
 
   describe service(serv) do
+    it { should be_installed }
     it { should be_enabled }
     it { should be_running }
   end

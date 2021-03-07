@@ -4,7 +4,7 @@ control 'shellinabox configuration' do
   title 'should match desired lines'
 
   case os[:name]
-  when 'centos'
+  when 'centos', 'oracle'
     file = '/etc/sysconfig/shellinaboxd'
     tpl = 'RedHat'
     siab_stanza = <<~SIAB_STANZA

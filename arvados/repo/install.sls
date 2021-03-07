@@ -22,10 +22,17 @@ arvados-repo-install-pkgrepo-managed:
     - key_url: {{ arvados.repo.key_url }}
 
   {%- elif grains.get('os_family') == 'RedHat' %}
+    {#- Construct `repo_url` by concatenation #}
+    {%- set repo_url = 'http://rpm.arvados.org/CentOS/' %}
+    {%- if grains.get('os') == 'OEL' %}
+      {%- set repo_url = repo_url ~ grains.get('osmajorrelease', '') %}
+    {%- else %}
+      {%- set repo_url = repo_url ~ '$releasever' %}
+    {%- endif  %}
     {%- if arvados.release == 'testing' %}
-      {%- set repo_url = 'http://rpm.arvados.org/CentOS/$releasever/testing/$basearch/' %}
+      {%- set repo_url = repo_url ~ '/testing/$basearch/' %}
     {%- elif arvados.release == 'development' %}
-      {%- set repo_url = 'http://rpm.arvados.org/CentOS/$releasever/dev/$basearch/' %}
+      {%- set repo_url = repo_url ~ '/dev/$basearch/' %}
     {%- else %}
       {%- set repo_url = arvados.repo.url_base %}
     {%- endif %}
